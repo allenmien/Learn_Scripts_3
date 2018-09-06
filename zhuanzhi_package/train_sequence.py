@@ -17,8 +17,6 @@ from zhuanzhi_ner.data.data_fetcher import NLPTaskDataFetcher, NLPTask
 from zhuanzhi_ner.data.embeddings import TokenEmbeddings, WordEmbeddings, StackedEmbeddings, CharLMEmbeddings
 from typing import List
 
-from zhuanzhi_package.train_sequence import corpus
-
 
 def train():
     '''
@@ -26,18 +24,15 @@ def train():
     :return:
     '''
 
-    # 1. 数据预处理理
-    re_precess_data = True
-    # 预处理理数据
-    if re_precess_data:
-        origin_folder = os.path.join('resources', 'origin_corpus',
-                                     'ner_corpus')
-        target_folder = os.path.join('resources', 'corpus')
-        data_folder = os.path.join('resources', 'corpus', 'data')
+    origin_folder = os.path.join('resources', 'origin_corpus',
+                                 'ner_corpus')
+    target_folder = os.path.join('resources', 'corpus')
+    data_folder = os.path.join('resources', 'corpus', 'data')
 
     # 2. 指定预测标签
     tag_type = 'ner'
     # 3. 从语料料库中创建标签字典
+    corpus: TaggedCorpus = NLPTaskDataFetcher.fetch_data(data_folder, NLPTask.CONLL_03_ZH)  # .downsample(0.1)
     tag_dictionary = corpus.make_tag_dictionary(tag_type=tag_type)
     print(tag_dictionary.idx2item)
     # 4. 实例例化embeddings
