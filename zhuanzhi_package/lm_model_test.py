@@ -4,9 +4,12 @@
 @Author : Mark
 @File   : lm_model_test.py
 """
+import os
+
 from zhuanzhi_ner.data import Sentence
 from zhuanzhi_ner.data.embeddings import CharLMEmbeddings
 
+os.environ['CUDA_VISIBLE_DEVICES'] = ''
 model_path = u'./resources/LM_model/lm-1.pt'
 
 # 实例例化CharLMEmbeddings类

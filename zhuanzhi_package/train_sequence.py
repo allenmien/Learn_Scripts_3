@@ -4,12 +4,6 @@
 @Author : Mark
 @File   : train_sequence.py
 """
-# -*-coding:utf-8-*-
-"""
-@Time   : 2018/9/6 17:26
-@Author : Mark
-@File   : preprocess.py
-"""
 import os
 
 from zhuanzhi_ner.data import TaggedCorpus
