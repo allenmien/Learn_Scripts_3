@@ -4,10 +4,12 @@
 @Author : Mark
 @File   : entity_recognize.py
 """
+import os
+
 from zhuanzhi_ner.data import Sentence
 from zhuanzhi_ner.models import SequenceTagger
-
-model_path = u'./resources/tagger/best-model-2.pt'
+os.environ['CUDA_VISIBLE_DEVICES'] = ''
+model_path = u'./resources/tagger/best-model.pt'
 
 tagger: SequenceTagger = SequenceTagger.load_from_file(model_path)
 
