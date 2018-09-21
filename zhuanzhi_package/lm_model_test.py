@@ -10,7 +10,7 @@ from zhuanzhi_ner.data import Sentence
 from zhuanzhi_ner.data.embeddings import CharLMEmbeddings
 
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
-model_path = u'./resources/LM_model/lm-1.pt'
+model_path = u'./resources/LM_model/best-lm.pt'
 
 # 实例例化CharLMEmbeddings类
 charlm_embedding_forward = CharLMEmbeddings(model_path)
@@ -18,5 +18,5 @@ charlm_embedding_forward = CharLMEmbeddings(model_path)
 sentence = Sentence('国防集团 公司 .')
 # embed句句⼦子中的词
 sentence_embedding = charlm_embedding_forward.embed(sentence)
-pass
+print(sentence_embedding)
 

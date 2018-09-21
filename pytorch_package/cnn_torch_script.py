@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 EPOCH = 1
 BATCH_SIZE = 50
 LR = 0.001
-DOWNLOAD_MINST = False
+DOWNLOAD_MINST = True
 
 train_data = torchvision.datasets.MINST(
     root='./minst',

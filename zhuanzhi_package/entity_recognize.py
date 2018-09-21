@@ -7,7 +7,7 @@
 from zhuanzhi_ner.data import Sentence
 from zhuanzhi_ner.models import SequenceTagger
 
-model_path = u'./resources/tagger/best-model.pt'
+model_path = u'./resources/tagger/best-model-2.pt'
 
 tagger: SequenceTagger = SequenceTagger.load_from_file(model_path)
 

@@ -32,7 +32,7 @@ def train():
     # 4. 实例例化embeddings
     print('初始化词向量')
     embedding_types: List[TokenEmbeddings] = [
-        CharLMEmbeddings('resources/LM_model/lm-1.pt'),
+        CharLMEmbeddings('resources/LM_model/best-lm.pt'),
     ]
     embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=embedding_types)
     # 5. 初始化序列列标记器器

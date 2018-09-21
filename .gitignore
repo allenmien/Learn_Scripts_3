@@ -2,3 +2,4 @@
 tensorflow_package/logs/
 tensorflow_package/__pycache__/__init__.cpython-36.pyc
 tensorflow_package/__pycache__/
+*.pyc
