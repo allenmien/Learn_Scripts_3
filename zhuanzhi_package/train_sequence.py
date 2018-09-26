@@ -32,7 +32,13 @@ def train():
     # 4. 实例例化embeddings
     print('初始化词向量')
     embedding_types: List[TokenEmbeddings] = [
-        CharLMEmbeddings('resources/LM_model/best-lm.pt'),
+        WordEmbeddings('resources/Word_model/sgns.financial.char', corpus),
+        WordEmbeddings('resources/Word_model/sgns.financial.word', corpus),
+        WordEmbeddings('resources/Word_model/sgns.sogou.char', corpus),
+        WordEmbeddings('resources/Word_model/sgns.sogou.word', corpus),
+        WordEmbeddings('resources/Word_model/ns.target.word-character.char1-2.dynwin5.thr10.neg5.dim300.iter5', corpus),
+        WordEmbeddings('resources/Word_model/sgns.target.word-word.dynwin5.thr10.neg5.dim300.iter5', corpus),
+        CharLMEmbeddings('resources/LM_model/best-lm.pt')
     ]
     embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=embedding_types)
     # 5. 初始化序列列标记器器
@@ -45,12 +51,14 @@ def train():
     # 6. 初始化模型训练器器
     from zhuanzhi_ner.trainers import SequenceTaggerTrainer
     trainer: SequenceTaggerTrainer = SequenceTaggerTrainer(tagger, corpus,
-                                                           test_mode=True)
+                                                           test_mode=True,
+                                                           script_path=u'resources/conll03_eval_script.pl'
+                                                           )
     # 7. 开始训练
     trainer.train('resources/taggers/example-ner',
                   learning_rate=0.1,
                   mini_batch_size=32,
-                  max_epochs=150)
+                  max_epochs=20)
 
 
 train()
