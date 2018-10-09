@@ -4,3 +4,5 @@ tensorflow_package/__pycache__/__init__.cpython-36.pyc
 tensorflow_package/__pycache__/
 *.pyc
 *.orig
+basic_package/corpus/bioes/N-00ab5ebc4f34c7f36201038e45108e12.txt
+basic_package/corpus/
