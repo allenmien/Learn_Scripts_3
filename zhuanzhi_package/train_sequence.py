@@ -33,7 +33,7 @@ def train():
     print('初始化词向量')
     embedding_types: List[TokenEmbeddings] = [
         # WordEmbeddings('resources/Word_model/sgns.financial.char', corpus),
-        WordEmbeddings('resources/Word_model/sgns.financial.word', corpus),
+        # WordEmbeddings('resources/Word_model/sgns.financial.word', corpus),
         # WordEmbeddings('resources/Word_model/sgns.sogou.char', corpus),
         # WordEmbeddings('resources/Word_model/sgns.sogou.word', corpus),
         # WordEmbeddings('resources/Word_model/ns.target.word-character.char1-2.dynwin5.thr10.neg5.dim300.iter5', corpus),
