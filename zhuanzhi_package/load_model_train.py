@@ -30,7 +30,7 @@ def load_model_and_train():
 
     print('开始训练')
     save_model_dir = "resources/taggers/example-ner"
-    trainer.train(save_model_dir, learning_rate=0.1, mini_batch_size=32, max_epochs=150, train_with_dev=True,
+    trainer.train(save_model_dir, learning_rate=0.1, mini_batch_size=32, max_epochs=50, train_with_dev=True,
                   save_model=True)
 
 
