@@ -34,7 +34,7 @@ def train():
         target_folder = os.path.join('resources', 'corpus')
 
         # 指定对已经分好词的语料文本进行预处理
-        use_word_segmented_corpus = True
+        use_word_segmented_corpus = False
         # 分词函数
         word_segmentation_func = jieba.cut
         # 将数据有html格式转化为bioes格式，并进行分词，默认为jieba分词
