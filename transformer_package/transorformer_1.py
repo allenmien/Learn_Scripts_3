@@ -227,7 +227,7 @@ class Embeddings(nn.Module):
         self.d_model = d_model
 
     def forward(self, x):
-        return self.lut(x) * math.sqrt(self.d_model)
+        return self.lut(x) * math.sqrt(self.d_model) #(30*10*512)*22
 
 
 class PositionalEncoding(nn.Module):
@@ -420,7 +420,7 @@ class SimpleLossCompute:
         if self.opt is not None:
             self.opt.step()
             self.opt.optimizer.zero_grad()
-        return loss.data[0] * norm
+        return loss.item() * norm
 
 
 # Train the simple copy task.
