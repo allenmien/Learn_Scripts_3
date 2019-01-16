@@ -238,10 +238,9 @@ class PositionalEncoding(nn.Module):
         self.dropout = nn.Dropout(p=dropout)
 
         # Compute the positional encodings once in log space.
-        pe = torch.zeros(max_len, d_model)
-        position = torch.arange(0, max_len).unsqueeze(1)
-        div_term = torch.exp(torch.arange(0, d_model, 2) *
-                             -(math.log(10000.0) / d_model))
+        pe = torch.zeros(max_len, d_model)  # 5000 * 512
+        position = torch.arange(0, max_len).unsqueeze(1).float()  # 5000*1 [[0],[1],[2],[3]...]
+        div_term = torch.exp((torch.arange(0, d_model, 2) * -(math.log(10000.0) / d_model)).float())
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
         pe = pe.unsqueeze(0)
@@ -274,9 +273,6 @@ def make_model(src_vocab, tgt_vocab, N=6,
         if p.dim() > 1:
             nn.init.xavier_uniform(p)
     return model
-
-
-tmp_model = make_model(10, 10, 2)
 
 
 class Batch:
