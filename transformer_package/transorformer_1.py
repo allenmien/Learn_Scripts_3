@@ -227,7 +227,7 @@ class Embeddings(nn.Module):
         self.d_model = d_model
 
     def forward(self, x):
-        return self.lut(x) * math.sqrt(self.d_model) #(30*10*512)*22
+        return self.lut(x) * math.sqrt(self.d_model)
 
 
 class PositionalEncoding(nn.Module):
@@ -238,9 +238,10 @@ class PositionalEncoding(nn.Module):
         self.dropout = nn.Dropout(p=dropout)
 
         # Compute the positional encodings once in log space.
-        pe = torch.zeros(max_len, d_model)  # 5000 * 512
-        position = torch.arange(0, max_len).unsqueeze(1).float()  # 5000*1 [[0],[1],[2],[3]...]
-        div_term = torch.exp((torch.arange(0, d_model, 2) * -(math.log(10000.0) / d_model)).float())
+        pe = torch.zeros(max_len, d_model)
+        position = torch.arange(0, max_len).unsqueeze(1)
+        div_term = torch.exp(torch.arange(0, d_model, 2) *
+                             -(math.log(10000.0) / d_model))
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
         pe = pe.unsqueeze(0)
@@ -420,7 +421,7 @@ class SimpleLossCompute:
         if self.opt is not None:
             self.opt.step()
             self.opt.optimizer.zero_grad()
-        return loss.item() * norm
+        return loss.data[0] * norm
 
 
 # Train the simple copy task.
