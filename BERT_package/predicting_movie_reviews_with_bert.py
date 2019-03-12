@@ -59,7 +59,7 @@ def download_and_load_datasets(force_download=False):
     test_df = load_dataset(os.path.join('./data/datasets',
                                         "aclImdb", "test"))
 
-    return train_df.iloc[0:2000, :], test_df.iloc[0:500, :]
+    return train_df, test_df
 
 
 train, test = download_and_load_datasets()
