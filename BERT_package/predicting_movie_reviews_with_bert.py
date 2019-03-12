@@ -47,12 +47,12 @@ def load_dataset(directory):
 
 # Download and process the dataset files.
 def download_and_load_datasets(force_download=False):
-    # dataset = tf.keras.utils.get_file(
-    #     fname="aclImdb.tar.gz",
-    #     origin="http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz",
-    #     extract=True,
-    #     cache_dir='./data'
-    # )
+    dataset = tf.keras.utils.get_file(
+        fname="aclImdb.tar.gz",
+        origin="http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz",
+        extract=True,
+        cache_dir='./data'
+    )
 
     train_df = load_dataset(os.path.join('./data/datasets',
                                          "aclImdb", "train"))
