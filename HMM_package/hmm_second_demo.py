@@ -60,8 +60,12 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
         newpath = {}
 
         for y in states:
-            # 概率 隐状态 =    前状态是y0的概率 * y0转移到y的概率 * y表现为当前状态的概率
-            (prob, state) = max([(V[t - 1][y0] * trans_p[y0][y] * emit_p[y][obs[t]], y0) for y0 in states])
+            prob_state_list = list()
+            for y0 in states:
+                # 概率 隐状态 = 前状态是y0的概率 * y0转移到y的概率 * y发射为当前observations的概率
+                prob_state_list.append((V[t - 1][y0] * trans_p[y0][y] * emit_p[y][obs[t]], y0))
+            (prob, state) = max(prob_state_list)
+            # (prob, state) = max([(V[t - 1][y0] * trans_p[y0][y] * emit_p[y][obs[t]], y0) for y0 in states])
             # 记录最大概率
             V[t][y] = prob
             # 记录路径

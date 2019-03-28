@@ -7,9 +7,9 @@ import redis
 
 class Processer(object):
     def __init__(self):
-        self.host = 'r-vy191470b319fbe4.redis.rds.aliyuncs.com'
+        self.host = ''
         self.port = ''
-        self.password = 'l67HeaGbXxcHB0w7'
+        self.password = ''
         self.pool = redis.ConnectionPool(host=self.host, password=self.password)
         self.redis_connection = redis.Redis(connection_pool=self.pool)
 
